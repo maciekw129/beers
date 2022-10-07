@@ -1,9 +1,9 @@
-
+import Header from './components/organisms/Header/Header';
 
 const App = () => {
   return (
-    <div className="App">
-      
+    <div>
+      <Header />
     </div>
   );
 }
