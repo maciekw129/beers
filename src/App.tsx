@@ -1,10 +1,17 @@
+import { Routes, Route, Navigate } from 'react-router-dom';
+// COMPONENTS
 import Header from './components/organisms/Header/Header';
+import Home from './components/templates/Home/Home';
 
 const App = () => {
   return (
-    <div>
+    <>
       <Header />
-    </div>
+      <Routes>
+        <Route path='*' element={ <Navigate to='/'/> }/>
+        <Route path='/' element={ <Home /> }/>
+      </Routes>
+    </>
   );
 }
 
