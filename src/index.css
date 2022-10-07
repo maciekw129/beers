@@ -2,5 +2,13 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+
   font-family: 'Gemunu Libre', sans-serif;
+  font-size: 1.15rem;
+}
+
+:root {
+  --colorWhite: #FFFFFF;
+  --colorBlack: #000000;
+  --colorPrimary: #F4A23F;
 }
