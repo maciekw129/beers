@@ -10,5 +10,7 @@
 :root {
   --colorWhite: #FFFFFF;
   --colorBlack: #000000;
+  --colorGray: hsl(0, 0%, 45%);
   --colorPrimary: #F4A23F;
+  --colorSecondary: #FA6835;
 }
