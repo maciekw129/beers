@@ -11,6 +11,20 @@
   --colorWhite: #FFFFFF;
   --colorBlack: #000000;
   --colorGray: hsl(0, 0%, 45%);
+  --colorLightGray: hsl(0, 0%, 85%);
   --colorPrimary: #F4A23F;
+  --colorLightPrimary: #F9E9D6;
   --colorSecondary: #FA6835;
+}
+
+p {
+  color: var(--colorGray);
+}
+
+h1 {
+  font-size: 2rem; 
+}
+
+.fixed-full-height {
+  min-height: calc(100vh - 170px);
 }
