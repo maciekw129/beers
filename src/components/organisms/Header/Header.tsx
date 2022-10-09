@@ -2,7 +2,7 @@ import './style.css';
 import logoIcon from '../../../images/logo-icon.png';
 // COMPONENTS
 import Navigation from '../../molecules/Navigation/Navigation';
-import Link from '../../atoms/Link/Link';
+import { Link } from 'react-router-dom';
 import Image from '../../atoms/Image/Image';
 
 const Header = () => {
@@ -14,13 +14,11 @@ const Header = () => {
             />
             <Navigation>
                 <Link 
-                    linkText="Home"
-                    link="a"
-                />
+                    to="/"
+                >Home</Link>
                 <Link 
-                    linkText="Beer list"
-                    link="a"
-                />
+                    to="/beer-list"
+                >Beer list</Link>
             </Navigation>
         </header>
     )
