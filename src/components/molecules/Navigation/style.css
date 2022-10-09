@@ -1,0 +1,12 @@
+.navigation > a {
+    text-decoration: none;
+    color: var(--colorBlack);
+    margin: 0 20px;
+    transition: color 0.2s linear;
+}
+
+.navigation > a:hover {
+    cursor: pointer;
+    color: var(--colorPrimary);
+    transition: color 0.2s linear;
+}

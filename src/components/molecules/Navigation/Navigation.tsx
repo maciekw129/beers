@@ -1,4 +1,4 @@
-
+import './style.css';
 interface Props {
     children: React.ReactNode
 }
