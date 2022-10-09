@@ -1,8 +1,9 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
+import beerReducer from './slices/beers';
 
 export const store = configureStore({
   reducer: {
-    
+    beers: beerReducer
   },
 });
 
