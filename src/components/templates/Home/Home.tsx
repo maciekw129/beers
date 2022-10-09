@@ -1,9 +1,11 @@
 import './style.css';
+// COMPONENTS
+import Hero from '../../organisms/Hero/Hero';
 
 const Home = () => {
     return(
-        <div>
-
+        <div className="home fixed-full-height">
+            <Hero />
         </div>
     )
 };
