@@ -1,16 +1,21 @@
 
 interface Props {
+    isHeader?: boolean,
     textContent: string,
     isBold?: boolean,
 }
 
-const Text = ({textContent, isBold}: Props) => {
+const Text = ({textContent, isBold, isHeader}: Props) => {
     const getStyle = (): string => {
         return `text ${isBold ? 'text--bold' : ''}`;
     }
 
     return(
-        <p className={getStyle()}>{textContent}</p>
+        <>
+        {isHeader 
+        ? <h1 className={getStyle()}>{textContent}</h1>
+        : <p className={getStyle()}>{textContent}</p>}
+        </>
     )
 }
 
