@@ -1,0 +1,6 @@
+.paginationBar {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    margin: 50px 0;
+}
