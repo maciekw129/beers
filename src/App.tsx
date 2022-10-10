@@ -1,4 +1,4 @@
-import { Routes, Route, Navigate } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 // COMPONENTS
 import Header from './components/organisms/Header/Header';
 import Home from './components/templates/Home/Home';
@@ -10,9 +10,11 @@ const App = () => {
     <>
       <Header />
         <Routes>
-          <Route path='*' element={ <Navigate to='/'/> }/>
+          
           <Route path='/' element={ <Home /> }/>
-          <Route path='/beer-list' element={ <BeerList />}/>
+          <Route path='/beer-list' element={ <BeerList /> }>
+            <Route path='/beer-list/:page' element={ <BeerList />}/>
+          </Route>
         </Routes>
       <Footer />
     </>
