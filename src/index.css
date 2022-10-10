@@ -28,3 +28,16 @@ h1 {
 .fixed-full-height {
   min-height: calc(100vh - 170px);
 }
+
+.styled-link {
+  text-decoration: none;
+  color: var(--colorBlack);
+  margin: 0 20px;
+  transition: color 0.2s linear;
+}
+
+.styled-link:hover {
+  cursor: pointer;
+  color: var(--colorPrimary);
+  transition: color 0.2s linear;
+}
