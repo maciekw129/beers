@@ -3,16 +3,20 @@ import { useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '../../../app/hooks';
 import type { RootState } from '../../../app/store';
 import { changePage } from '../../../app/slices/beers';
+import { useParams } from 'react-router-dom';
 // COMPONENTS
 import BeerCard from '../../molecules/BeerCard/BeerCard';
 
 const BeerGrid = () => {
     const dispatch = useAppDispatch();
     const beers = useAppSelector((state: RootState) => state.beers.beers);
+    const params = useParams();
 
     useEffect(() => {
-        dispatch(changePage(1));
-    }, [])
+        if(params.page) {
+            dispatch(changePage(parseInt(params.page)));
+        }
+    }, [params.page])
 
     return(
         <div className="beerGrid">
