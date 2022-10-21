@@ -1,7 +1,13 @@
 .text {
-    
+    display: flex;
 }
 
 .text--bold {
     font-weight: 600;
+}
+
+.text__label {
+    font-weight: bold;
+    color: var(--colorSecondary);
+    margin-right: 10px;
 }
