@@ -3,10 +3,11 @@ import { ChangeEvent, useEffect, useState } from 'react';
 
 interface Props {
     placeholder: string,
-    type: 'text' | 'password'
+    type: 'text' | 'password',
+    change: (text: string) => void
 }
 
-const Input = ({placeholder, type}: Props) => {
+const Input = ({placeholder, type, change}: Props) => {
     const [style, setStyle] = useState<'input__placeholder--desactive' | 'input__placeholder--active'>('input__placeholder');
     const [value, setValue] = useState('');
     const [initial, setInitial] = useState(true);
@@ -15,13 +16,14 @@ const Input = ({placeholder, type}: Props) => {
         if(!initial) {
             !!value ? setStyle('input__placeholder--active')
             : setStyle('input__placeholder--desactive');
+            change(value);
         } else {
             setInitial(false);
         }
     }, [value]);
 
     const handleChange = (event: ChangeEvent<HTMLInputElement>): void => {
-        setValue(event.target.value);
+        setValue(event.target.value)
     }
 
     return(
