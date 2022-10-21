@@ -1,8 +1,15 @@
-.beerGrid {
+.beerGrid__grid {
     margin-top: 50px;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(400px, 400px));
     justify-content: center;
     column-gap: 50px;
     row-gap: 50px;
+}
+
+.beerGrid__empty {
+    min-height: calc(100vh - 293px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
