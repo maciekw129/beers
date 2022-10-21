@@ -4,7 +4,7 @@ import Beer from '../../types/Beer';
 
 interface stateTypes {
     page: number,
-    beers: Beer[] | [],
+    beers: Beer[],
     isNextPage: boolean
 }
 
