@@ -1,6 +1,6 @@
 import './style.css';
 // COMPONENTS
-import Search from '../../molecules/Search/Search';
+import Search from '../Search/Search';
 
 const Hero = () => {
     return(
