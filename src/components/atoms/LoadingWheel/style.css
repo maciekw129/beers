@@ -1,0 +1,26 @@
+.loading-wheel {
+    animation: spin 1s ease-in-out 0s infinite;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 25px;
+    width: 25px;
+    margin: 10px;
+}
+
+.loading-wheel__section {
+    display: flex;
+    justify-content: space-between;
+}
+
+.loading-wheel__dot {
+    width: 10px;
+    height: 10px;
+    background-color: var(--colorSecondary);
+    border-radius: 50px;
+}
+
+@keyframes spin {
+    from {transform: rotate(0)}
+    to {transform: rotate(350deg)}
+};
