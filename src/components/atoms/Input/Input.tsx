@@ -9,10 +9,15 @@ interface Props {
 const Input = ({placeholder, type}: Props) => {
     const [style, setStyle] = useState<'input__placeholder--desactive' | 'input__placeholder--active'>('input__placeholder');
     const [value, setValue] = useState('');
+    const [initial, setInitial] = useState(true);
 
     useEffect(() => {
-        !!value ? setStyle('input__placeholder--active')
-        : setStyle('input__placeholder--desactive');
+        if(!initial) {
+            !!value ? setStyle('input__placeholder--active')
+            : setStyle('input__placeholder--desactive');
+        } else {
+            setInitial(false);
+        }
     }, [value]);
 
     const handleChange = (event: ChangeEvent<HTMLInputElement>): void => {

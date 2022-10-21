@@ -1,5 +1,6 @@
 .input__container {
     position: relative;
+    margin: 0 20px;
 }
 
 .input {
@@ -20,7 +21,7 @@
     position: absolute;
     bottom: 10px;
     left: 20px;
-    z-index: 99;
+    z-index: -1;
     color: var(--colorGray);
     background-color: var(--colorWhite);
 }
