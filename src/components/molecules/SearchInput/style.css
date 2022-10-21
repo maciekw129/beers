@@ -1,0 +1,13 @@
+.search-input {
+    padding: 25px 90px;
+    background-color: var(--colorWhite);
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.search-input__input {
+    margin-top: 30px;
+    display: flex;
+}
