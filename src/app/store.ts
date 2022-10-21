@@ -1,9 +1,11 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
 import beerReducer from './slices/beers';
+import searchReducer from './slices/search';
 
 export const store = configureStore({
   reducer: {
-    beers: beerReducer
+    beers: beerReducer,
+    search: searchReducer
   },
 });
 
