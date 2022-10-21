@@ -1,12 +1,13 @@
 import './style.css';
 
 interface Props {
-    text: string
+    text: string,
+    handleClick: () => void
 }
 
-const Button = ({text}: Props) => {
+const Button = ({text, handleClick}: Props) => {
     return(
-        <button className="button">{text}</button>
+        <button className="button" onClick={handleClick}>{text}</button>
     )
 };
 

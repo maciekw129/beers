@@ -4,7 +4,6 @@
     border-radius: 5px;
     font-size: 1rem;
     background-color: var(--colorPrimary);
-    margin: 0 20px;
     transition: background-color 0.2s linear;
 }
 
