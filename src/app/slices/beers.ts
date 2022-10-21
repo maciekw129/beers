@@ -14,7 +14,7 @@ const initialState: stateTypes = {
     isNextPage: true
 }
 
-export const changePage = createAsyncThunk('beers/getBeersByPage', async (page: number, thunkAPI) => {
+export const changePage  = createAsyncThunk('beers/getBeersByPage', async (page: number, thunkAPI) => {
     thunkAPI.dispatch(beersSlice.actions.setPage(page));
     const isNextPage = await requests.getBeersByPage(page + 1);
     thunkAPI.dispatch(beersSlice.actions.setIsNextPage(!!isNextPage.data[0]));
@@ -36,7 +36,7 @@ const beersSlice = createSlice({
     },
     extraReducers: (builder) => {
         builder.addCase(changePage.fulfilled, (state, action) => {
-            state.beers = action.payload
+            state.beers = action.payload;
         })
     }
 });
