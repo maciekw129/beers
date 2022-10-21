@@ -6,3 +6,10 @@
     padding: 20px;
     border-radius: 5px;
 }
+
+.beerCard__left {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+}
