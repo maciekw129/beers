@@ -1,10 +1,12 @@
 .beerDetail {
     display: flex;
     justify-content: center;
+    padding-top: 50px;
 }
 
 .beerDetail__content {
     max-width: 1000px;
+    max-height: 500px;
     width: 80%;
     display: flex;
     justify-content: center;

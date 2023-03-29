@@ -2,12 +2,17 @@ import './style.css';
 
 interface Props {
     text: string,
-    handleClick: () => void
+    handleClick?: () => void
+    isSubmit?: boolean
 }
 
-const Button = ({text, handleClick}: Props) => {
+const Button = ({text, handleClick, isSubmit}: Props) => {
     return(
-        <button className="button" onClick={handleClick}>{text}</button>
+        <button 
+            className="button" 
+            type={isSubmit ? 'submit' : 'button'} 
+            onClick={handleClick}
+        >{text}</button>
     )
 };
 

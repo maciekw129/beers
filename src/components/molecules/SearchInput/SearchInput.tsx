@@ -1,16 +1,20 @@
 import './style.css';
 import { useState, useEffect } from 'react';
-import { useAppDispatch } from '../../../app/hooks';
-import { fetchBeers } from '../../../app/slices/search';
-import { setText } from '../../../app/slices/search';
+import { useAppDispatch, useAppSelector } from '../../../app/hooks';
+import { fetchBeers, setText, clearState } from '../../../app/slices/search';
+import { RootState } from '../../../app/store';
+import { useNavigate } from 'react-router-dom';
 // COMPONENTS
 import Input from '../../atoms/Input/Input';
 import Button from '../../atoms/Button/Button';
 import Text from '../../atoms/Text/Text';
+import LoadingWheel from '../../atoms/LoadingWheel/LoadingWheel';
 
 const SearchInput = () => {
     const dispatch = useAppDispatch();
+    const { isLoading, text } = useAppSelector((state: RootState) => state.search);
     const [timeoutId, setTimeoutId] = useState<NodeJS.Timeout | undefined>();
+    const navigate = useNavigate();
 
     useEffect(() => {
         return(() => {
@@ -18,35 +22,43 @@ const SearchInput = () => {
         })
     }, [])
 
-    const handleChange = (text: string): void => {
+    const handleChange = (text: string) => {
+        if(timeoutId) clearTimeout(timeoutId); 
         dispatch(setText(text));
-        const timeout = setTimeout(() => {
-            dispatch(fetchBeers(text));
-        }, 1000);
-        if(timeoutId) {
-            clearTimeout(timeoutId);
+        if(text) {
+            const timeout = setTimeout(() => {
+                dispatch(fetchBeers(text));
+            }, 500);
+            setTimeoutId(timeout);
+        } else {
+            dispatch(clearState());
         }
-        setTimeoutId(timeout);
+    }
+
+    const handleSearch = () => {
+        navigate(`/beer-list/1/${text}`);
     }
 
     return(
-        <div className="search-input">
+        <form className="search-input" onSubmit={handleSearch}>
             <Text
                 textContent="Search for any beer!"
                 isHeader
             />
             <div className="search-input__input">
-                <Input 
+                <Input
+                    isRequired 
                     placeholder="Beer"
                     type="text"
                     change={handleChange}
                 />
                 <Button 
+                    isSubmit
                     text="Search"
-                    handleClick={() => console.log('clicked')}
                 />
+                {isLoading && <div className="search-input__loading-wrapper"><LoadingWheel /></div>}
             </div>
-        </div>
+        </form>
     )
 };
 

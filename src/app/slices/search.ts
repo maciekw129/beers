@@ -4,21 +4,22 @@ import Beer from '../../types/Beer';
 
 interface stateTypes {
     text: string,
-    beers: Beer[]
+    beers: Beer[],
+    isLoading: boolean,
+    errorMessage: string
 }
 
 const initialState: stateTypes = {
     text: '',
     beers: [],
+    isLoading: false,
+    errorMessage: ''
+    
 }
 
-export const fetchBeers = createAsyncThunk('search/fetchBeers', async(text: string, { dispatch }) => {
-    if(text) {
-        const response = await requests.getBeersByName(text);
-        return response.data;
-    } else {
-        dispatch(searchSlice.actions.clearState);
-    }   
+export const fetchBeers = createAsyncThunk('search/fetchBeers', async(text: string) => {
+    const response = await requests.getBeersByName(text);
+    return response.data; 
 })
 
 const searchSlice = createSlice({
@@ -29,13 +30,27 @@ const searchSlice = createSlice({
             state.text = action.payload;
         },
         clearState: (state) => {
+            state.beers = [];
             state.text = '';
-            state.beers = []
+            state.errorMessage = '';
         }
     },
     extraReducers: (builder) => {
+        builder.addCase(fetchBeers.pending, (state) => {
+            state.isLoading = true;
+            state.errorMessage = '';
+        })
         builder.addCase(fetchBeers.fulfilled, (state, action) => {
-            state.beers = action.payload
+            const result = action.payload;
+            if(!result.length) {
+                state.errorMessage = `We haven't found any beer`;
+            }
+            state.beers = action.payload;
+            state.isLoading = false;
+        })
+        builder.addCase(fetchBeers.rejected, (state) => {
+            state.isLoading = false;
+            state.errorMessage = 'Something went wrong. Check your internet connection.'
         })
     }
 });

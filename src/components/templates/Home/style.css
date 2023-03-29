@@ -1,3 +1,4 @@
 .home {
-    background-color: var(--colorLightPrimary);
+    background-image: url('../../../images/hero-image.jpg');
+    background-position: center;
 }

@@ -6,21 +6,21 @@ import { Link } from 'react-router-dom';
 import Text from '../../atoms/Text/Text';
 
 const PaginationBar = () => {
-    const { page, isNextPage } = useAppSelector((state: RootState) => state.beers);
+    const { pageParams, isNextPage } = useAppSelector((state: RootState) => state.beers);
 
     const nextPage = (): string => {
         window.scroll(0, 0);
-        return `/beer-list/${page + 1}`;
+        return `/beer-list/${+pageParams.page + 1}${pageParams.name ? '/' + pageParams.name : ''}`;
     }
 
     const previousPage = (): string => {
         window.scroll(0, 0);
-        return `/beer-list/${page - 1}`;
+        return `/beer-list/${+pageParams.page - 1}${pageParams.name ? '/' + pageParams.name : ''}`;
     }
 
     return(
         <div className="paginationBar">
-            {page > 1 
+            {pageParams.page > 1 
             ? <Link 
                 className="styled-link"
                 to={previousPage()}
@@ -29,7 +29,7 @@ const PaginationBar = () => {
             }
             
             <Text 
-                textContent={page.toString()}
+                textContent={pageParams.page.toString()}
             />
             {isNextPage
             ? <Link 

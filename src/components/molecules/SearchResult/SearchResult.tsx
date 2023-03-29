@@ -7,11 +7,13 @@ import Text from '../../atoms/Text/Text';
 
 const SearchResult = () => {
     const navigate = useNavigate();
-    const beers = useAppSelector((state: RootState) => state.search.beers);
+    const { beers, errorMessage } = useAppSelector((state: RootState) => state.search);
 
     return(
         <ul className="search-result">
-            {beers.map(beer => {
+            {errorMessage 
+            ? <li className="search-result__empty">{ errorMessage }</li>
+            :beers!.map(beer => {
                 return (
                 <li 
                     className="search-result__item" 

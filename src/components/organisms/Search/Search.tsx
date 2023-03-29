@@ -9,18 +9,18 @@ import { RootState } from '../../../app/store';
 
 const Search = () => {
     const dispatch = useAppDispatch();
-    const beers = useAppSelector((state: RootState) => state.search.beers);
+    const text = useAppSelector((state: RootState) => state.search.text);
 
     useEffect(() => {
-        return(() => {
-            dispatch(clearState());
-        })
+       return () => {
+        dispatch(clearState());
+       }
     }, [])
 
     return(
         <div className="search">
             <SearchInput/>
-            { beers && <SearchResult/> }
+            {text && <SearchResult />}
         </div>
     )
 };

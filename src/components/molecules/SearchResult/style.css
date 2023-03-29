@@ -13,6 +13,11 @@
     transition: background-color 0.2s linear;
 }
 
+.search-result__empty {
+    padding: 20px;
+    text-align: center;
+}
+
 .search-result__item:hover {
     cursor: pointer;
     background-color: var(--colorLightGray);

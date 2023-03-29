@@ -36,15 +36,15 @@ interface Beer {
             }
         },
         twist: null | string,
-        ingredients: {
-            hops: {},
-            malt: {},
-            yeast: string
-        },
-        food_pairing: string[],
-        brewers_tips: string,
-        contributed_by: string
-    }
+    },
+    ingredients: {
+        hops: {},
+        malt: {},
+        yeast: string
+    },
+    food_pairing: string[],
+    brewers_tips: string,
+    contributed_by: string
 }
 
 export default Beer;

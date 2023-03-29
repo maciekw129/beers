@@ -2,7 +2,7 @@ import './style.css';
 import { useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '../../../app/hooks';
 import type { RootState } from '../../../app/store';
-import { changePage } from '../../../app/slices/beers';
+import { changePage, setParams, clearBeers } from '../../../app/slices/beers';
 import { useParams } from 'react-router-dom';
 // COMPONENTS
 import BeerCard from '../../molecules/BeerCard/BeerCard';
@@ -10,12 +10,18 @@ import Text from '../../atoms/Text/Text';
 
 const BeerGrid = () => {
     const dispatch = useAppDispatch();
-    const beers = useAppSelector((state: RootState) => state.beers.beers);
+    const { beers } = useAppSelector((state: RootState) => state.beers);
     const params = useParams();
 
     useEffect(() => {
-        if(params.page) {
-            dispatch(changePage(parseInt(params.page)));
+        if(params.page) dispatch(changePage({
+            name: params.name,
+            page: +params.page
+        }));
+        dispatch(setParams(params));
+
+        return () => {
+            dispatch(clearBeers());
         }
     }, [params.page])
 

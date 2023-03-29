@@ -2,13 +2,19 @@ import './style.css';
 
 interface Props {
     image: string,
-    alt: string
+    alt: string,
+    click?: () => void
 }
 
-const Image = ({image, alt}: Props) => {
+const Image = ({image, alt, click}: Props) => {
+
+    const getStyle = () => {
+        return `image ${click ? 'image--clickable' : ''}`
+    }
+
     return(
         <div className="image__container">
-            <img className="image" src={image} alt={alt} />
+            <img className={getStyle()} src={image} alt={alt} onClick={click} />
         </div>
     )
 };

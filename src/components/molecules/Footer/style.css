@@ -3,6 +3,6 @@
     align-items: center;
     justify-content: center;
     width: 100%;
-    height: 50px;
-    border-top: 1px solid var(--colorLightGray);
+    height: 60px;
+    border-top: 1.5px solid black;
 }

@@ -3,12 +3,13 @@ interface Props {
     isHeader?: boolean,
     textContent: string,
     isBold?: boolean,
-    label?: string
+    label?: string,
+    isError?: boolean
 }
 
-const Text = ({textContent, isBold, isHeader, label}: Props) => {
+const Text = ({textContent, isBold, isHeader, label, isError}: Props) => {
     const getStyle = (): string => {
-        return `text ${isBold ? 'text--bold' : ''}`;
+        return `text ${isBold ? 'text--bold' : ''} ${isError && 'text--error'}`;
     }
 
     return(

@@ -4,10 +4,11 @@ import { ChangeEvent, useEffect, useState } from 'react';
 interface Props {
     placeholder: string,
     type: 'text' | 'password',
-    change: (text: string) => void
+    change: (text: string) => void,
+    isRequired: boolean
 }
 
-const Input = ({placeholder, type, change}: Props) => {
+const Input = ({placeholder, type, change, isRequired}: Props) => {
     const [style, setStyle] = useState<'input__placeholder--desactive' | 'input__placeholder--active'>('input__placeholder');
     const [value, setValue] = useState('');
     const [initial, setInitial] = useState(true);
@@ -33,6 +34,7 @@ const Input = ({placeholder, type, change}: Props) => {
                 type={type}
                 value={value}
                 onChange={handleChange}
+                required={isRequired}
             />
             <span className={'input__placeholder ' + style}>{placeholder}</span>
         </div>
